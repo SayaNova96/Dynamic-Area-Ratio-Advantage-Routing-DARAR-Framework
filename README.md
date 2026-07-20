@@ -3,5 +3,24 @@
 
 
 
-# Dynamic-Area-Ratio-Advantage-Routing-DARAR-Framework
-DARAR (Dynamic Area-Ratio Advantage Routing) is a decentralized deep reinforcement learning framework designed for multi-UAV swarm search and rescue operations. Developed by Sayantan Chakraborty, it uses bounded proxy gradients to optimize flight paths and battery sharing in harsh, non-stationary environments.
+### **Note on DARAR**
+
+**DARAR** (**D**ynamic **A**rea-**R**atio **A**dvantage **R**outing) is a decentralized Deep Reinforcement Learning (DRL) framework designed for multi-UAV (Unmanned Aerial Vehicle) swarm coordination in search and rescue (SAR) operations across non-stationary disaster environments.
+
+Created by **Sayantan Chakraborty** (PhD Research Scholar at IIIT Guwahati), the algorithm addresses key multi-robot challenges: scale volatility, dynamic hazards (e.g., wind, smoke), edge-compute constraints, and individual battery drain.
+
+---
+
+### **Key Technical Features**
+
+* **Localized 10D State Vector:** To run on low-power onboard microcontrollers, each UAV tracks a compact 10-dimensional feature tensor containing its normalized 3D position, velocity vector, a relative threat repulsion field ($\mathbf{V}_{\text{dynamic}}$), and local map entropy ($H$).
+* **Informative Path Planning (IPP):** Embeds an environment map uncertainty decay parameter ($\lambda$), ensuring unmonitored sectors naturally regain uncertainty. This forces the swarm into continuous patrol loops to harvest Dynamic Information Gain ($DIG$) rewards.
+* **Scale-Invariant Reward Architecture:** Utilizes an Area-Ratio Adjuster ($\Omega = (\text{Volume})^{-1/3}$) to equalize reward step magnitudes, allowing policy weights to operate seamlessly across small or large search arenas.
+* **Bounded Gradient Step Proxy:** Replaces computationally heavy TRPO/PPO trust-region Hessian updates with an algebraic parameter clip ($\pm\delta = 0.01$). This safeguards the neural network against policy collapse caused by sudden collision penalties without overloading edge hardware.
+* **Cooperative Energy Balancing:** Incorporates a peer-to-peer load-sharing logic within sub-groups to transfer operational charge mid-air to low-battery drones, ensuring sustained fleet flight time.
+
+---
+
+### **Performance**
+
+In CUDA-accelerated $1000^3$ spatial simulations with 50 UAVs, DARAR achieved a **97.6% rescue efficiency rate** (locating 293 out of 300 targets) while reducing per-step runtime complexity to $O(1)$ constant-time constraints per agent.
