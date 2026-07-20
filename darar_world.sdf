@@ -1,0 +1,2075 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="darar_world">
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors"/>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>500 500 1000 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <pose>500 500 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><plane><normal>0 0 1</normal><size>1000 1000</size></plane></geometry></collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>1000 1000</size></plane></geometry>
+          <material><ambient>0.2 0.25 0.15 1</ambient><diffuse>0.2 0.25 0.15 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="water_shallow">
+      <static>true</static>
+      <pose>200 300 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>400 500 4.0</size></box></geometry>
+        <material><ambient>0 0.4 0.8 0.6</ambient><diffuse>0 0.4 0.8 0.6</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="water_deep">
+      <static>true</static>
+      <pose>700 650 6.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>500 500 12.0</size></box></geometry>
+        <material><ambient>0 0.2 0.6 0.8</ambient><diffuse>0 0.2 0.6 0.8</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="nfz_1"><static>true</static><pose>200 200 250 0 0 0</pose><link name="l"><visual name="v"><geometry><box><size>120 120 500</size></box></geometry><material><ambient>1 0 0 0.4</ambient><diffuse>1 0 0 0.4</diffuse></material></visual></link></model>
+    <model name="nfz_2"><static>true</static><pose>500 800 250 0 0 0</pose><link name="l"><visual name="v"><geometry><box><size>150 150 500</size></box></geometry><material><ambient>1 0 0 0.4</ambient><diffuse>1 0 0 0.4</diffuse></material></visual></link></model>
+    <model name="nfz_3"><static>true</static><pose>800 300 250 0 0 0</pose><link name="l"><visual name="v"><geometry><box><size>140 140 500</size></box></geometry><material><ambient>1 0 0 0.4</ambient><diffuse>1 0 0 0.4</diffuse></material></visual></link></model>
+
+    <model name="static_building_0">
+      <static>true</static>
+      <pose>625.5 72.5 18.7 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 37.4</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_0">
+      <static>true</static>
+      <pose>250.9 712.8 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_1">
+      <static>true</static>
+      <pose>659.0 853.0 10.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 28.9</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_1">
+      <static>true</static>
+      <pose>429.7 76.8 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_2">
+      <static>true</static>
+      <pose>246.8 504.8 13.1 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 26.2</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_2">
+      <static>true</static>
+      <pose>229.0 634.9 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_3">
+      <static>true</static>
+      <pose>540.4 248.4 25.8 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 51.5</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_3">
+      <static>true</static>
+      <pose>778.5 55.8 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_4">
+      <static>true</static>
+      <pose>775.2 678.3 16.2 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 40.3</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_4">
+      <static>true</static>
+      <pose>189.9 911.5 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_5">
+      <static>true</static>
+      <pose>352.9 133.5 14.7 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 29.4</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_5">
+      <static>true</static>
+      <pose>812.7 593.4 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_6">
+      <static>true</static>
+      <pose>776.4 706.8 20.6 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 49.1</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_6">
+      <static>true</static>
+      <pose>925.8 390.7 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_7">
+      <static>true</static>
+      <pose>546.8 796.5 22.4 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 52.8</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_7">
+      <static>true</static>
+      <pose>825.5 569.6 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_8">
+      <static>true</static>
+      <pose>684.1 91.2 17.6 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 35.3</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_8">
+      <static>true</static>
+      <pose>310.4 121.8 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_9">
+      <static>true</static>
+      <pose>259.5 140.9 18.8 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 37.5</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_9">
+      <static>true</static>
+      <pose>622.1 378.3 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_10">
+      <static>true</static>
+      <pose>383.2 238.6 18.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 37.0</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_10">
+      <static>true</static>
+      <pose>893.0 633.2 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_11">
+      <static>true</static>
+      <pose>598.2 204.0 28.9 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 57.8</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_11">
+      <static>true</static>
+      <pose>197.1 391.5 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_12">
+      <static>true</static>
+      <pose>940.6 626.0 21.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 50.1</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_12">
+      <static>true</static>
+      <pose>666.2 808.6 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_13">
+      <static>true</static>
+      <pose>748.4 256.1 13.2 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 26.4</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_13">
+      <static>true</static>
+      <pose>333.9 291.0 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_14">
+      <static>true</static>
+      <pose>239.9 898.6 32.2 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 64.4</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_14">
+      <static>true</static>
+      <pose>333.2 639.9 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_15">
+      <static>true</static>
+      <pose>406.1 873.1 22.8 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 45.6</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_15">
+      <static>true</static>
+      <pose>288.4 272.0 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_16">
+      <static>true</static>
+      <pose>555.2 286.5 25.7 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 51.3</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_16">
+      <static>true</static>
+      <pose>858.0 409.5 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_17">
+      <static>true</static>
+      <pose>247.4 947.8 24.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 47.9</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_17">
+      <static>true</static>
+      <pose>131.8 92.4 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_18">
+      <static>true</static>
+      <pose>148.7 614.7 30.3 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 60.6</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_18">
+      <static>true</static>
+      <pose>429.9 107.2 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_building_19">
+      <static>true</static>
+      <pose>393.5 946.5 24.4 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>25 25 48.8</size></box></geometry>
+        <material><ambient>0.3 0.3 0.35 1</ambient><diffuse>0.3 0.3 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="tree_19">
+      <static>true</static>
+      <pose>924.0 824.7 12.0 0 0 0</pose>
+      <link name="link">
+        <visual name="trunk"><geometry><cylinder><radius>1.5</radius><length>24.0</length></cylinder></geometry><material><ambient>0.4 0.2 0.05 1</ambient></material></visual>
+        <visual name="canopy"><pose>0 0 12 0 0 0</pose><geometry><sphere><radius>8.0</radius></sphere></geometry><material><ambient>0.05 0.5 0.1 1</ambient></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_0">
+      <static>true</static>
+      <pose>40.8 707.5 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_1">
+      <static>true</static>
+      <pose>670.8 534.8 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_2">
+      <static>true</static>
+      <pose>280.8 632.5 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_3">
+      <static>true</static>
+      <pose>134.9 438.7 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_4">
+      <static>true</static>
+      <pose>456.5 926.6 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_5">
+      <static>true</static>
+      <pose>853.3 277.6 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_6">
+      <static>true</static>
+      <pose>500.6 197.9 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_7">
+      <static>true</static>
+      <pose>887.9 848.3 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_8">
+      <static>true</static>
+      <pose>310.5 630.6 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_9">
+      <static>true</static>
+      <pose>602.4 173.7 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_10">
+      <static>true</static>
+      <pose>746.8 537.0 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_11">
+      <static>true</static>
+      <pose>761.9 528.5 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_12">
+      <static>true</static>
+      <pose>30.5 334.7 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_13">
+      <static>true</static>
+      <pose>48.3 903.4 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_14">
+      <static>true</static>
+      <pose>856.0 811.8 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_15">
+      <static>true</static>
+      <pose>319.1 84.4 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_16">
+      <static>true</static>
+      <pose>855.3 920.1 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_17">
+      <static>true</static>
+      <pose>110.5 486.8 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_18">
+      <static>true</static>
+      <pose>95.1 745.0 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_19">
+      <static>true</static>
+      <pose>749.9 150.7 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_20">
+      <static>true</static>
+      <pose>476.8 546.8 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_21">
+      <static>true</static>
+      <pose>279.2 850.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_22">
+      <static>true</static>
+      <pose>427.7 229.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_23">
+      <static>true</static>
+      <pose>536.9 716.1 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_24">
+      <static>true</static>
+      <pose>219.1 323.0 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_25">
+      <static>true</static>
+      <pose>965.4 640.9 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_26">
+      <static>true</static>
+      <pose>441.8 516.5 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_27">
+      <static>true</static>
+      <pose>143.7 241.2 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_28">
+      <static>true</static>
+      <pose>347.8 583.0 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_29">
+      <static>true</static>
+      <pose>246.3 237.0 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_30">
+      <static>true</static>
+      <pose>96.7 623.2 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_31">
+      <static>true</static>
+      <pose>245.2 881.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_32">
+      <static>true</static>
+      <pose>838.1 96.6 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_33">
+      <static>true</static>
+      <pose>253.7 658.8 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_34">
+      <static>true</static>
+      <pose>231.4 154.4 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_35">
+      <static>true</static>
+      <pose>909.4 566.8 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_36">
+      <static>true</static>
+      <pose>474.3 767.5 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_37">
+      <static>true</static>
+      <pose>789.0 209.0 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_38">
+      <static>true</static>
+      <pose>121.1 435.2 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_39">
+      <static>true</static>
+      <pose>428.2 469.0 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_40">
+      <static>true</static>
+      <pose>715.3 663.0 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_41">
+      <static>true</static>
+      <pose>955.1 122.5 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_42">
+      <static>true</static>
+      <pose>408.5 348.9 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_43">
+      <static>true</static>
+      <pose>840.0 263.7 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_44">
+      <static>true</static>
+      <pose>208.8 451.7 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_45">
+      <static>true</static>
+      <pose>426.6 291.8 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_46">
+      <static>true</static>
+      <pose>264.8 897.9 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_47">
+      <static>true</static>
+      <pose>446.5 839.7 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_48">
+      <static>true</static>
+      <pose>547.3 77.6 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_49">
+      <static>true</static>
+      <pose>969.3 815.9 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_50">
+      <static>true</static>
+      <pose>940.9 900.8 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_51">
+      <static>true</static>
+      <pose>827.8 186.3 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_52">
+      <static>true</static>
+      <pose>486.5 230.9 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_53">
+      <static>true</static>
+      <pose>407.0 85.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_54">
+      <static>true</static>
+      <pose>386.2 956.2 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_55">
+      <static>true</static>
+      <pose>279.3 767.0 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_56">
+      <static>true</static>
+      <pose>457.7 427.6 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_57">
+      <static>true</static>
+      <pose>929.9 965.7 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_58">
+      <static>true</static>
+      <pose>552.4 705.3 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_59">
+      <static>true</static>
+      <pose>175.5 308.9 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_60">
+      <static>true</static>
+      <pose>940.6 574.4 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_61">
+      <static>true</static>
+      <pose>539.7 733.1 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_62">
+      <static>true</static>
+      <pose>83.7 579.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_63">
+      <static>true</static>
+      <pose>502.7 831.6 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_64">
+      <static>true</static>
+      <pose>178.0 933.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_65">
+      <static>true</static>
+      <pose>105.3 204.7 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_66">
+      <static>true</static>
+      <pose>589.3 664.7 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_67">
+      <static>true</static>
+      <pose>251.1 142.7 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_68">
+      <static>true</static>
+      <pose>866.9 261.4 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_69">
+      <static>true</static>
+      <pose>588.8 612.2 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_70">
+      <static>true</static>
+      <pose>424.1 578.7 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_71">
+      <static>true</static>
+      <pose>521.4 908.6 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_72">
+      <static>true</static>
+      <pose>222.0 703.2 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_73">
+      <static>true</static>
+      <pose>254.4 402.0 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_74">
+      <static>true</static>
+      <pose>661.4 312.0 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_75">
+      <static>true</static>
+      <pose>327.2 736.8 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_76">
+      <static>true</static>
+      <pose>98.2 460.8 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_77">
+      <static>true</static>
+      <pose>968.5 966.3 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_78">
+      <static>true</static>
+      <pose>98.9 230.4 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_79">
+      <static>true</static>
+      <pose>279.3 907.3 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_80">
+      <static>true</static>
+      <pose>858.0 856.5 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_81">
+      <static>true</static>
+      <pose>377.4 178.3 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_82">
+      <static>true</static>
+      <pose>813.7 691.3 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_83">
+      <static>true</static>
+      <pose>605.0 958.0 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_84">
+      <static>true</static>
+      <pose>644.7 37.4 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_85">
+      <static>true</static>
+      <pose>798.1 311.4 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_86">
+      <static>true</static>
+      <pose>653.6 912.6 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_87">
+      <static>true</static>
+      <pose>156.2 138.5 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_88">
+      <static>true</static>
+      <pose>130.6 550.0 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_89">
+      <static>true</static>
+      <pose>286.0 598.5 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_90">
+      <static>true</static>
+      <pose>704.6 221.4 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_91">
+      <static>true</static>
+      <pose>626.2 278.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_92">
+      <static>true</static>
+      <pose>489.2 881.0 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_93">
+      <static>true</static>
+      <pose>825.3 116.8 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_94">
+      <static>true</static>
+      <pose>428.2 290.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_95">
+      <static>true</static>
+      <pose>33.3 754.9 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_96">
+      <static>true</static>
+      <pose>628.9 276.2 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_97">
+      <static>true</static>
+      <pose>726.8 548.6 2.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_98">
+      <static>true</static>
+      <pose>432.0 39.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="static_victim_99">
+      <static>true</static>
+      <pose>100.7 860.1 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.0</radius></sphere></geometry>
+        <material><ambient>1 0.84 0 1</ambient><diffuse>1 0.84 0 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name="dynamic_victim_0">
+      <pose>863.5 541.0 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_0/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_1">
+      <pose>801.1 574.3 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_1/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_2">
+      <pose>183.3 164.7 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_2/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_3">
+      <pose>327.4 859.1 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_3/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_4">
+      <pose>766.5 824.6 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_4/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_5">
+      <pose>859.0 239.1 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_5/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_6">
+      <pose>274.6 142.5 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_6/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_7">
+      <pose>752.1 845.7 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_7/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_8">
+      <pose>415.7 608.6 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_8/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_9">
+      <pose>189.1 886.9 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_9/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_10">
+      <pose>828.1 928.6 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_10/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_11">
+      <pose>779.7 843.3 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_11/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_12">
+      <pose>72.3 712.9 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_12/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_13">
+      <pose>349.0 887.7 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_13/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_14">
+      <pose>772.0 827.7 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_14/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_15">
+      <pose>779.7 290.1 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_15/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_16">
+      <pose>758.6 147.3 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_16/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_17">
+      <pose>835.0 822.7 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_17/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_18">
+      <pose>250.2 784.9 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_18/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_19">
+      <pose>464.3 324.7 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_19/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_20">
+      <pose>765.8 254.8 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_20/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_21">
+      <pose>71.3 223.8 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_21/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_22">
+      <pose>345.4 827.9 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_22/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_23">
+      <pose>920.2 301.2 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_23/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_24">
+      <pose>627.3 409.7 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_24/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_25">
+      <pose>933.0 532.6 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_25/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_26">
+      <pose>895.3 153.8 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_26/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_27">
+      <pose>923.4 210.7 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_27/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_28">
+      <pose>916.3 288.9 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_28/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_29">
+      <pose>147.6 441.1 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_29/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_30">
+      <pose>705.7 332.3 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_30/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_31">
+      <pose>595.6 510.3 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_31/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_32">
+      <pose>396.7 568.9 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_32/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_33">
+      <pose>279.3 687.9 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_33/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_34">
+      <pose>51.5 883.0 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_34/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_35">
+      <pose>534.6 697.5 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_35/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_36">
+      <pose>717.8 653.6 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_36/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_37">
+      <pose>377.8 113.0 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_37/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_38">
+      <pose>647.8 347.2 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_38/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="dynamic_victim_39">
+      <pose>332.5 813.2 3.5 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><sphere><radius>4.5</radius></sphere></geometry>
+        <material><ambient>0 1 0.2 1</ambient><diffuse>0 1 0.2 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/dynamic_victim_39/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_0">
+      <pose>100.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_0/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_1">
+      <pose>180.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_1/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_2">
+      <pose>260.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_2/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_3">
+      <pose>340.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_3/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_4">
+      <pose>420.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_4/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_5">
+      <pose>500.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_5/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_6">
+      <pose>580.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_6/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_7">
+      <pose>660.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_7/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_8">
+      <pose>740.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_8/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_9">
+      <pose>820.0 100.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_9/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_10">
+      <pose>100.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_10/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_11">
+      <pose>180.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_11/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_12">
+      <pose>260.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_12/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_13">
+      <pose>340.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_13/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_14">
+      <pose>420.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_14/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_15">
+      <pose>500.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_15/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_16">
+      <pose>580.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_16/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_17">
+      <pose>660.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_17/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_18">
+      <pose>740.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_18/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_19">
+      <pose>820.0 260.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_19/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_20">
+      <pose>100.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_20/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_21">
+      <pose>180.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_21/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_22">
+      <pose>260.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_22/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_23">
+      <pose>340.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_23/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_24">
+      <pose>420.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_24/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_25">
+      <pose>500.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_25/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_26">
+      <pose>580.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_26/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_27">
+      <pose>660.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_27/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_28">
+      <pose>740.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_28/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_29">
+      <pose>820.0 420.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_29/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_30">
+      <pose>100.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_30/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_31">
+      <pose>180.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_31/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_32">
+      <pose>260.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_32/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_33">
+      <pose>340.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_33/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_34">
+      <pose>420.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_34/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_35">
+      <pose>500.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_35/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_36">
+      <pose>580.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_36/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_37">
+      <pose>660.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_37/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_38">
+      <pose>740.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_38/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_39">
+      <pose>820.0 580.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_39/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_40">
+      <pose>100.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_40/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_41">
+      <pose>180.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_41/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_42">
+      <pose>260.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_42/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_43">
+      <pose>340.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_43/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_44">
+      <pose>420.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_44/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_45">
+      <pose>500.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_45/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_46">
+      <pose>580.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_46/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_47">
+      <pose>660.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_47/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_48">
+      <pose>740.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_48/cmd_vel</topic>
+      </plugin>
+    </model>
+    <model name="uav_49">
+      <pose>820.0 740.0 70.0 0 0 0</pose>
+      <link name="link">
+        <visual name="vis"><geometry><box><size>5 5 1.8</size></box></geometry>
+        <material><ambient>0 0.8 1 1</ambient><diffuse>0 0.8 1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl">
+        <topic>/model/uav_49/cmd_vel</topic>
+      </plugin>
+    </model></world></sdf>
